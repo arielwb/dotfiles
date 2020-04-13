@@ -1,4 +1,7 @@
+zmodload zsh/zprof
+
 source /Users/aflor/.bash_profile
+source /Users/aflor/.secrets
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export ZSH="/Users/aflor/.oh-my-zsh"
@@ -61,10 +64,9 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # Miscellaneous commands
 #zplug "andrewferrier/fzf-z"
-zplug "k4rthik/git-cal",  as:command
+# zplug "k4rthik/git-cal",  as:command
 zplug "peco/peco",        as:command, from:gh-r
-zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, \
-	use:"*${(L)$(uname -s)}*amd64*"
+# zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, use:"*${(L)$(uname -s)}*amd64*"
 zplug "junegunn/fzf", use:"shell/*.zsh", as:plugin
 
 # Enhanced cd
@@ -83,27 +85,28 @@ zplug "tarrasch/zsh-bd"
 #zplug "arzzen/calc.plugin.zsh"
 
 # Directory colors
-zplug "seebi/dircolors-solarized", ignore:"*", as:plugin
+# zplug "seebi/dircolors-solarized", ignore:"*", as:plugin
 
 # Load theme
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+# zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 #zplug "plugins/common-aliases",    from:oh-my-zsh
 #zplug "plugins/colored-man-pages", from:oh-my-zsh
 #zplug "plugins/colorize",          from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
-zplug "plugins/copydir",           from:oh-my-zsh
-zplug "plugins/copyfile",          from:oh-my-zsh
-zplug "plugins/cp",                from:oh-my-zsh
-zplug "plugins/dircycle",          from:oh-my-zsh
-zplug "plugins/encode64",          from:oh-my-zsh
-zplug "plugins/extract",           from:oh-my-zsh
-zplug "plugins/history",           from:oh-my-zsh
+# zplug "plugins/copydir",           from:oh-my-zsh
+# zplug "plugins/copyfile",          from:oh-my-zsh
+# zplug "plugins/cp",                from:oh-my-zsh
+# zplug "plugins/dircycle",          from:oh-my-zsh
+# zplug "plugins/encode64",          from:oh-my-zsh
+# zplug "plugins/extract",           from:oh-my-zsh
+# zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/tmux",              from:oh-my-zsh
-zplug "plugins/tmuxinator",        from:oh-my-zsh
+# zplug "plugins/tmuxinator",        from:oh-my-zsh
 #zplug "plugins/urltools",          from:oh-my-zsh
 #zplug "plugins/web-search",        from:oh-my-zsh
-zplug "plugins/z",                 from:oh-my-zsh
+# zplug "plugins/z",                 from:oh-my-zsh
 #zplug "plugins/fancy-ctrl-z",      from:oh-my-zsh
 
 # Supports oh-my-zsh plugins and the like
@@ -115,25 +118,25 @@ fi
 if [[ $OSTYPE = (darwin)* ]]; then
     zplug "lib/clipboard",         from:oh-my-zsh
     zplug "plugins/osx",           from:oh-my-zsh
-    zplug "plugins/brew",          from:oh-my-zsh, if:"(( $+commands[brew] ))"
-    zplug "plugins/macports",      from:oh-my-zsh, if:"(( $+commands[port] ))"
+    # zplug "plugins/brew",          from:oh-my-zsh, if:"(( $+commands[brew] ))"
+    # zplug "plugins/macports",      from:oh-my-zsh, if:"(( $+commands[port] ))"
 fi
 
 zplug "plugins/git",               from:oh-my-zsh, if:"(( $+commands[git] ))"
 #zplug "plugins/golang",            from:oh-my-zsh, if:"(( $+commands[go] ))"
-zplug "plugins/svn",               from:oh-my-zsh, if:"(( $+commands[svn] ))"
-zplug "plugins/node",              from:oh-my-zsh, if:"(( $+commands[node] ))"
+#zplug "plugins/svn",               from:oh-my-zsh, if:"(( $+commands[svn] ))"
+#zplug "plugins/node",              from:oh-my-zsh, if:"(( $+commands[node] ))"
 #zplug "plugins/npm",               from:oh-my-zsh, if:"(( $+commands[npm] ))"
 #zplug "plugins/bundler",           from:oh-my-zsh, if:"(( $+commands[bundler] ))"
 #zplug "plugins/gem",               from:oh-my-zsh, if:"(( $+commands[gem] ))"
 #zplug "plugins/rbenv",             from:oh-my-zsh, if:"(( $+commands[rbenv] ))"
 #zplug "plugins/rvm",               from:oh-my-zsh, if:"(( $+commands[rvm] ))"
 #zplug "plugins/pip",               from:oh-my-zsh, if:"(( $+commands[pip] ))"
-zplug "plugins/sudo",              from:oh-my-zsh, if:"(( $+commands[sudo] ))"
+# zplug "plugins/sudo",              from:oh-my-zsh, if:"(( $+commands[sudo] ))"
 #zplug "plugins/gpg-agent",         from:oh-my-zsh, if:"(( $+commands[gpg-agent] ))"
 #zplug "plugins/systemd",           from:oh-my-zsh, if:"(( $+commands[systemctl] ))"
-zplug "plugins/docker",            from:oh-my-zsh, if:"(( $+commands[docker] ))"
-zplug "plugins/docker-compose",    from:oh-my-zsh, if:"(( $+commands[docker-compose] ))"
+# zplug "plugins/docker",            from:oh-my-zsh, if:"(( $+commands[docker] ))"
+#zplug "plugins/docker-compose",    from:oh-my-zsh, if:"(( $+commands[docker-compose] ))"
 
 #zplug "djui/alias-tips"
 zplug "hlissner/zsh-autopair", defer:2
@@ -142,7 +145,7 @@ zplug "zsh-users/zsh-autosuggestions"
 # zsh-syntax-highlighting must be loaded after executing compinit command
 # and sourcing other plugins
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-history-substring-search", defer:3
+# zplug "zsh-users/zsh-history-substring-search", defer:3
 
 
 
@@ -251,7 +254,7 @@ if zplug check "bhilburn/powerlevel9k"; then
     POWERLEVEL9K_MODE='nerdfont-complete'
    # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir newline vcs)
     POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=( dir_writable status dir )
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs load ram_joined battery time ssh)
+    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs command_execution_time ram_joined battery time ssh)
 
     POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="$DEFAULT_FOREGROUND"
     POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="$DEFAULT_BACKGROUND"
@@ -268,9 +271,11 @@ if zplug check "bhilburn/powerlevel9k"; then
     POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="$DEFAULT_FOREGROUND"
     POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND="$DEFAULT_FOREGROUND"
 
-    POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND="$DEFAULT_BACKGROUND"
-    POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND="$DEFAULT_FOREGROUND"
-    POWERLEVEL9K_EXECUTION_TIME_ICON="\u23F1"
+    POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND="$DEFAULT_FOREGROUND"
+    POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND="$DEFAULT_BACKGROUND"
+    POWERLEVEL9K_COMMAND_EXECUTION_TIME_VISUAL_IDENTIFIER_COLOR="yellow"
+    POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
+    POWERLEVEL9K_EXECUTION_TIME_ICON="\ufa1e"
 
     POWERLEVEL9K_TIME_FOREGROUND="$DEFAULT_FOREGROUND"
     POWERLEVEL9K_TIME_BACKGROUND="$DEFAULT_BACKGROUND"
@@ -317,7 +322,7 @@ eval "$(pyenv virtualenv-init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/aflor/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/aflor/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/Users/aflor/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/aflor/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/aflor/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/aflor/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/Users/aflor/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/aflor/google-cloud-sdk/completion.zsh.inc'; fi
